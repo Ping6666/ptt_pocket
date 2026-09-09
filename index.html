@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-visual">
+  <meta name="theme-color" content="#111917">
+  <meta name="description" content="讓 PTT 網頁終端隨手機可見空間調整的實驗性瀏覽介面。">
+  <title>PTT Pocket · 手機終端測試</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <main id="viewport">
+    <header id="toolbar">
+      <div class="brand"><span class="mark" aria-hidden="true">&gt;_</span> PTT <span class="muted">Pocket</span></div>
+      <button id="settings-toggle" type="button" aria-expanded="false" aria-controls="settings">畫面設定</button>
+    </header>
+    <section id="stage" aria-label="PTT 終端">
+      <iframe id="terminal" src="https://term.ptt.cc/" title="PTT 官方網頁終端" allow="fullscreen" referrerpolicy="strict-origin-when-cross-origin"></iframe>
+    </section>
+    <aside id="settings" aria-label="畫面設定" hidden>
+      <div class="panel-title"><h1>畫面設定</h1><button id="settings-close" type="button">完成</button></div>
+      <p>點擊終端內的畫面輸入。鍵盤展開時，畫面會跟隨可見空間調整。</p>
+      <label for="width">畫面寬度（%）</label>
+      <input id="width" type="number" inputmode="numeric" min="0" max="100" step="1" value="100" required>
+      <label for="topSpace">上方空間（px）</label>
+      <input id="topSpace" type="number" inputmode="numeric" min="0" step="1" value="0" required aria-describedby="spacing-hint">
+      <p id="spacing-hint" class="hint">從上方工具列下緣起算，可設為 0px。畫面固定水平置中，左右留白相同。寬度為 0% 時隱藏畫面。</p>
+      <button id="reset" type="button" class="secondary">還原畫面設定</button>
+      <details><summary>測試資訊與限制</summary>
+        <dl id="diagnostics"></dl>
+        <p id="load-status" role="status">正在載入官方頁面…</p>
+        <p>這是非官方的排版測試工具。帳號與文字直接在官方頁面輸入；本工具不讀取終端內容。</p>
+        <p>外層無法確認 PTT 是否連線成功。若畫面空白或顯示拒絕嵌入，請直接開啟官方網站。手機方向鍵、中文輸入及叫出鍵盤的行為仍由官方頁面處理。</p>
+        <a href="https://term.ptt.cc/" target="_blank" rel="noopener noreferrer">另開官方網站 ↗</a>
+      </details>
+    </aside>
+    <noscript>請啟用 JavaScript，或直接前往 <a href="https://term.ptt.cc/">PTT 官方網站</a>。</noscript>
+  </main>
+</body>
+</html>
